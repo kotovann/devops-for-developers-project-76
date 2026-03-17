@@ -1,5 +1,26 @@
 - hosts: all
 
   roles:
-    - geerlingguy.pip
-    - geerlingguy.docker
+  - role: geerlingguy.pip
+    tags: prepare
+  - role: geerlingguy.docker
+    tags: prepare
+
+  tasks:
+    - name: Deploy Redmine
+      tags: redmine-deploy
+      block:
+        - name: Create .env file
+          ansible.builtin.template:
+            src: .env.j2
+            dest: /root/.env
+
+        - name: Run Redmine
+          community.docker.docker_container:
+            name: redmine
+            image: redmine
+            state: started
+            ports:
+              - "{{ redmine_port }}:3000"
+            env_file: /root/.env
+        
