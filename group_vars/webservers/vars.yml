@@ -3,3 +3,7 @@ db_host: "{{ v_db_host }}"
 db_username: "{{ v_db_username }}"
 db_password: "{{ v_db_password }}"
 db_name: "{{ v_db_name }}"
+
+datadog_api_key: "{{ v_datadog_api_key }}"
+datadog_site: "datadoghq.eu"
+my_url: "http://localhost:{{ redmine_port }}"

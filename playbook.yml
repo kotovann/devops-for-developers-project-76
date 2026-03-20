@@ -23,4 +23,17 @@
             ports:
               - "{{ redmine_port }}:3000"
             env_file: /root/.env
-        
+
+- hosts: webservers
+  vars:
+    datadog_checks:
+      http_check:
+        instances:
+          - name: Redmine
+            url: "{{ my_url }}"
+            timeout: 5
+  tasks:
+    - name: Install DataDog agent
+      tags: monitoring
+      ansible.builtin.import_role:
+        name: datadog.dd.agent
