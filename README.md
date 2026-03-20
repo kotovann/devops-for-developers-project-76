@@ -45,7 +45,7 @@ make deploy
 make vault-edit
 ```
 ```yml
-v_datadog_api_key: "ваш_api_ключ"
+v_datadog_api_key: "ваш api ключ"
 ```
 8. Запустите мониторинг
 ```bash
