@@ -4,5 +4,11 @@ roles:
 prepare:
 	ansible-playbook -i inventory.ini playbook.yml --tags prepare
 
-redmine-deploy:
-	ansible-playbook -i inventory.ini playbook.yml --tags redmine-deploy
+deploy:
+	ansible-playbook -i inventory.ini playbook.yml --tags redmine-deploy --vault-password-file vault_pswd
+
+vault-edit:
+	ansible-vault edit group_vars/webservers/vault.yml --vault-password-file vault_pswd
+
+vault-encrypt:
+	ansible-vault encrypt group_vars/webservers/vault.yml --vault-password-file vault_pswd

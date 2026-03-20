@@ -1,0 +1,5 @@
+---
+db_host: "{{ v_db_host }}"
+db_username: "{{ v_db_username }}"
+db_password: "{{ v_db_password }}"
+db_name: "{{ v_db_name }}"
